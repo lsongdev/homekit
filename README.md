@@ -13,7 +13,7 @@ $ npm i homekit
 ```js
 const HomeKit = require('homekit');
 
-const uuid  = HomeKit.uuid.generate("homekit:yeelight");
+const uuid = HomeKit.uuid.generate("homekit:yeelight");
 const acce = new HomeKit.Accessory('Simple Light', uuid);
 
 acce.on('identify', function(paired, callback) {
