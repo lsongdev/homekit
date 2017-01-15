@@ -1,11 +1,11 @@
-## homekit ![homekit@0.0.1](https://img.shields.io/npm/v/homekit.svg)
+## homekit ![homekit](https://img.shields.io/npm/v/homekit.svg)
 
 > A HomeKit Accessory implementation in Node.js
 
 ### Installation
 
 ```bash
-$ npm install homekit
+$ npm i homekit
 ```
 
 ### Example
@@ -13,8 +13,27 @@ $ npm install homekit
 ```js
 const HomeKit = require('homekit');
 
-// your code here
+const uuid  = HomeKit.uuid.generate("homekit:yeelight");
+const acce = new HomeKit.Accessory('Simple Light', uuid);
 
+acce.on('identify', function(paired, callback) {
+  console.log("Identify!");
+  callback(); // success
+});
+
+acce
+.addService(Service.Lightbulb, 'Yeelight')
+.getCharacteristic(Characteristic.On)
+.on('set', function(value, callback) {
+  light.set_power(value, callback);
+})
+
+// Publish the Accessory on the local network.
+acce.publish({
+  port    : 51826,
+  username: "CC:22:3D:E3:CE:F6",
+  pincode : "031-45-154"
+});
 ```
 
 ### Contributing
@@ -28,5 +47,25 @@ const HomeKit = require('homekit');
 - Enjoy hacking <3
 
 ### MIT
+
+Copyright (c) 2016 Lsong &lt;song940@gmail.com&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
 ---

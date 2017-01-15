@@ -1,6 +1,6 @@
 {
   "name": "homekit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A HomeKit Accessory implementation in Node.js",
   "main": "index.js",
   "engines": {

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env node
 
 const fs      = require('fs');
 const path    = require('path');
@@ -24,18 +24,19 @@ bridge.on('identify', function(paired, callback) {
 var dir = path.join(process.cwd(), "accessories");
 fs.readdirSync(dir).forEach(function(file) {
   var accessory = require(path.join(dir, file));
-  accessory.publish({
-    port: targetPort++,
-    username: accessory.username,
-    pincode: accessory.pincode
-  });
-  // bridge.addBridgedAccessory(accessory);
+  if(typeof accessory === 'function'){
+    accessory(function(accessory){
+      bridge.addBridgedAccessory(accessory);
+    });
+  }else{
+    bridge.addBridgedAccessory(accessory);
+  }
 });
 
 // Publish the Bridge on the local network.
-// bridge.publish({
-//   username: "CC:22:3D:E3:CE:F6",
-//   port: targetPort,
-//   pincode: "031-45-154",
-//   category: HomeKit.Accessory.Categories.BRIDGE
-// });
+bridge.publish({
+  username: "CC:22:3D:E3:CE:F6",
+  port: targetPort,
+  pincode: "031-45-154",
+  category: HomeKit.Accessory.Categories.BRIDGE
+});
