@@ -1,6 +1,13 @@
+'use strict';
 
-exports.Bridge         = require('./Bridge');
-exports.Accessory      = require('./Accessory');
-exports.Service        = require('./Service');
-exports.Characteristic = require('./Characteristic');
-exports.uuid           = require('./lib/util/uuid');
+function HomeKit(){
+
+};
+
+HomeKit.uuid           = require('./lib/util/uuid');
+HomeKit.Bridge         = require('./lib/Bridge');
+HomeKit.Accessory      = require('./lib/Accessory');
+HomeKit.Service        = require('./lib/Service');
+HomeKit.Characteristic = require('./lib/Characteristic');
+
+module.exports = HomeKit;
