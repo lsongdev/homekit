@@ -10,7 +10,7 @@ var MOTION_SENSOR = {
 
   getStatus: function() {
     //set the boolean here, this will be returned to the device
-    MOTION_SENSOR.motionDetected = false;
+    MOTION_SENSOR.motionDetected = !false;
   },
   identify: function() {
     console.log("Identify the motion sensor!");

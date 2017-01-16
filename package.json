@@ -21,7 +21,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/homekit.js"
+    "start": "node example"
   },
   "bin":{
     "homekit": "bin/homekit.js"

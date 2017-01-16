@@ -8,8 +8,8 @@ const HomeKit = require('..');
 storage.initSync();
 
 // Start by creating our Bridge which will host all loaded Accessories
-const uuid = HomeKit.uuid.generate("homekit:bridge:demo");
-const bridge = new HomeKit.Bridge('My Bridge', uuid);
+const uuid = HomeKit.uuid.generate("homekit:bridge:demo1");
+const bridge = new HomeKit.Bridge('My Office Bridge', uuid);
 
 // Listen for bridge identification event
 bridge.on('identify', function(paired, callback) {
@@ -36,7 +36,7 @@ bridge.on('listening', function(){
 
 // Publish the Bridge on the local network.
 bridge.publish({
-  username: "CC:22:3D:E3:CE:F6",
+  username: "CC:22:3D:E3:CE:F7",
   port: 51826,
   pincode: "123-45-678",
   category: HomeKit.Accessory.Categories.BRIDGE
