@@ -7,6 +7,7 @@ const uuid           = HomeKit.uuid;
 // here's a fake hardware device that we'll expose to HomeKit
 var FAKE_FAN = {
   powerOn: false,
+  speed: 0,
   setPowerOn: function(on) {
     if(on){
       //put your code here to turn on the fan
@@ -18,26 +19,22 @@ var FAKE_FAN = {
     }
   },
   setSpeed: function(value) {
-    console.log("Setting fan rSpeed to %s", value);
+    speed = value;
+    console.log("Setting fan speed to %s", speed);
     //put your code here to set the fan to a specific value
   },
   identify: function() {
     //put your code here to identify the fan
-    console.log("Fan Identified!");
+    console.log('%s Identify!', fan.displayName);
   }
 }
 
 // This is the Accessory that we'll return to HAP-NodeJS that represents our fake fan.
-var fan = new Accessory('Fan', uuid.generate('hap-nodejs:accessories:Fan'));
+var fan = new Accessory('Fan', uuid.generate('homekit:accessories:Fan'));
 
-// Add properties for publishing (in case we're using Core.js and not BridgedCore.js)
-fan.username = "1A:2B:3C:4D:5E:FF";
-fan.pincode = "031-45-154";
-
-// set some basic properties (these values are arbitrary and setting them is optional)
 fan
-  .getService(Service.AccessoryInformation)
-  .setCharacteristic(Characteristic.Manufacturer, "Sample Company")
+.getService(Service.AccessoryInformation)
+.setCharacteristic(Characteristic.Manufacturer, "Sample Company")
 
 // listen for the "identify" event for this Accessory
 fan.on('identify', function(paired, callback) {
@@ -78,15 +75,15 @@ fan
 
 // also add an "optional" Characteristic for spped
 fan
-  .getService(Service.Fan)
-  .addCharacteristic(Characteristic.RotationSpeed)
-  .on('get', function(callback) {
-    callback(null, FAKE_FAN.rSpeed);
-  })
-  .on('set', function(value, callback) {
-    FAKE_FAN.setSpeed(value);
-    callback();
-  })
+.getService(Service.Fan)
+.addCharacteristic(Characteristic.RotationSpeed)
+.on('get', function(callback) {
+  callback(null, FAKE_FAN.speed);
+})
+.on('set', function(value, callback) {
+  FAKE_FAN.setSpeed(value);
+  callback();
+})
 
 
 module.exports = fan;

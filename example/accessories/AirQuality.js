@@ -7,6 +7,10 @@ const UUID           = HomeKit.uuid;
 var uuid = UUID.generate('homekit:air-quality');
 var sensor = new Accessory('AirQuality', uuid);
 
+sensor.on('identify', function(){
+  console.log('%s Identify!', sensor.displayName);
+});
+
 sensor
 .addService(Service.AirQualitySensor)
 .getCharacteristic(Characteristic.AirQuality)
