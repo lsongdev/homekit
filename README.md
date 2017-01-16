@@ -1,4 +1,4 @@
-## homekit ![homekit](https://img.shields.io/npm/v/homekit.svg)
+## HomeKit ![homekit](https://img.shields.io/npm/v/homekit.svg)
 
 > A HomeKit Accessory implementation in Node.js
 

@@ -3,11 +3,7 @@
 const fs      = require('fs');
 const path    = require('path');
 const storage = require('node-persist');
-const HomeKit = require('..');
-
-var targetPort = 51826;
-console.log("HomeKit Server starting...");
-
+const HomeKit = require('../');
 // Initialize our storage system
 storage.initSync();
 
@@ -33,10 +29,14 @@ fs.readdirSync(dir).forEach(function(file) {
   }
 });
 
+bridge.on('listening', function(){
+  console.log("HomeKit Server starting...");
+});
+
 // Publish the Bridge on the local network.
 bridge.publish({
   username: "CC:22:3D:E3:CE:F6",
-  port: targetPort,
-  pincode: "031-45-154",
+  port: 51826,
+  pincode: "123-45-678",
   category: HomeKit.Accessory.Categories.BRIDGE
 });
