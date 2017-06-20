@@ -1,6 +1,8 @@
 
-.DS_Store
+
 *.log
+.DS_Store
+homekit.json
 
 persist/
 node_modules/

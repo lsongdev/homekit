@@ -1,4 +1,4 @@
-const HomeKit        = require('../../');
+const HomeKit        = require('../..');
 const Accessory      = HomeKit.Accessory;
 const Service        = HomeKit.Service;
 const Characteristic = HomeKit.Characteristic;
@@ -55,7 +55,7 @@ var LightController = {
   },
 
   identify: function() { //identify the accessory
-    console.log("Identify the '%s'", light.name);
+    console.log("Identify the '%s'", this.name);
   }
 }
 
