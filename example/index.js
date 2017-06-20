@@ -2,10 +2,7 @@
 
 const fs      = require('fs');
 const path    = require('path');
-const storage = require('node-persist');
 const HomeKit = require('..');
-// Initialize our storage system
-storage.initSync();
 
 // Start by creating our Bridge which will host all loaded Accessories
 const uuid = HomeKit.uuid.generate("homekit:bridge:demo");

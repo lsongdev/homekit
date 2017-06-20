@@ -2,9 +2,6 @@
 
 > A HomeKit Accessory implementation in Node.js
 
-### WIP
-This code is still very much alpha and early stage, but that just makes it more fun to work with. If you find an issue/problem, fork it and issue a pull request. No matter what, enjoy and do cool things with this code.
-
 ### Installation
 
 ```bash
