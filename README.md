@@ -33,8 +33,8 @@ acce.on('identify', function(paired, callback) {
 });
 
 acce
-.addService(Service.Lightbulb, 'Yeelight')
-.getCharacteristic(Characteristic.On)
+.addService(HomeKit.Service.Lightbulb, 'Yeelight')
+.getCharacteristic(HomeKit.Characteristic.On)
 .on('set', function(value, callback) {
   light.set_power(value, callback);
 })
