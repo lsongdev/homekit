@@ -24,7 +24,7 @@ sudo apt-get install avahi-daemon avahi-discover libnss-mdns libavahi-compat-lib
 ```js
 const HomeKit = require('homekit');
 
-const uuid = HomeKit.uuid.generate("homekit:yeelight");
+const uuid = HomeKit.UUID.generate("homekit:yeelight");
 const acce = new HomeKit.Accessory('Simple Light', uuid);
 
 acce.on('identify', function(paired, callback) {
